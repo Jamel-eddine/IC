@@ -2,9 +2,14 @@ pipeline {
     agent any
 
     stages {
+            stage('Download') {
+            steps {
+                git 'https://github.com/Jamel-eddine/IC.git'
+            }
+        }
         stage('Build') {
             steps {
-                echo 'Building..'
+                bat label: '', script: 'mvn clean install'
             }
         }
         stage('Test') {
